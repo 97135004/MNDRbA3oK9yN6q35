@@ -1,0 +1,306 @@
+
+[data-notify="progressbar"] {
+	margin-bottom: 0px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 5px;
+}
+
+.custom-input-width {
+	width:150px;
+   /*  margin-right:3px; */
+}
+
+.custom-padding2 {
+	/*margin-right:3px; */
+	padding = 2px;
+}
+
+.min-width {
+    min-width: 970px;
+}
+
+/* input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+ */
+.modal-loading {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: /* rgba( 255, 255, 255, .8 ) /* putih */  rgba(0, 0, 0, 0.5)
+                url("./images/loading.gif")
+                50% 50% 
+                no-repeat;
+}
+.login-loading {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background:  rgba(0, 0, 0, 0.4)
+                url("./images/Spinner-1s-82px.gif")
+                50% 50% 
+                no-repeat;
+}
+
+.login-loading .message{
+    color: #fff;
+    text-align: center;
+    height: 100%;
+    display: table-cell;
+    padding-top: 100px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.download-loading {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background:  rgba(0, 0, 0, 0.6)
+                url("./images/Facebook-1s-82px.gif")
+                50% 50% 
+                no-repeat;
+}
+
+.download-loading .message{
+    color: #fff;
+    text-align: center;
+    height: 100%;
+    display: table-cell;
+    padding-top: 100px;
+    vertical-align: middle;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading, body.loading2 {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal-loading {
+    display: block;
+}
+body.loading .login-loading, body.loading2 .download-loading {
+    display: table;
+}
+
+div.boxshadow {
+    width: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+
+div.boxshadow-center {
+    width: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+div.boxshadow-right {
+    width: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: right;
+}
+
+th, td { white-space: nowrap; } div.dataTables_wrapper {margin: 0 auto;} div.container {width: 80%;}
+
+
+/* .dataTables_processing { 
+left: 50%;
+position: absolute;
+top: 50%;
+z-index: 100; 	
+} */
+
+div.dataTables_wrapper div.dataTables_processing {
+   padding-top: 10px;
+   padding-bottom: 10px;   
+   height: 50px; 
+   z-index: 100; 
+} 
+
+/* Buat Mengecilkan jarak Checkbox Awal============================================================= */
+
+.checkbox{margin-top:1px;margin-bottom:5px}
+
+.checkbox label {min-height:12px;}
+/* Buat Mengecilkan jarak Checkbox Akhir============================================================= */
+
+
+/*Awal Untuk Collapse according arrow==================================================*/
+/* .panel-heading .accordion-toggle:after {
+    font-family: 'Glyphicons Halflings'; 
+    content: "\e114";   
+    float: right; 
+    color: grey; 
+}
+.panel-heading .accordion-toggle.collapsed:after {   
+    content: "\e080";   
+}
+ */
+/*Akhir Untuk Collapse according arrow==================================================*/
+
+/*Awal Toast==================================================*/
+/* #toast-container > .toast {
+    background-image: none !important;
+}
+
+#toast-container > .toast:before {
+    position: fixed;
+    font-family: FontAwesome;
+    font-size: 24px;
+    line-height: 18px;
+    float: left;
+    color: #FFF;
+    padding-right: 0.5em;
+    margin: auto 0.5em auto -1.5em;
+}        
+#toast-container > .toast-warning:before {
+    content: "\f003";
+}
+#toast-container > .toast-error:before {
+    content: "\f001";
+}
+#toast-container > .toast-info:before {
+    content: "\f005";
+}
+#toast-container > .toast-success:before {
+    content: "\f002";
+} */
+/*Akhir Toast==================================================*/
+
+
+/* btn 3d
+.btn {
+  position: relative;
+  border: 0 !important;
+  &:focus { outline: 0; }
+  &:hover { top: 2px; }
+  &:active { top: 6px; }
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold !important;
+  
+  .border-radius(10);
+  .transition(all, 50ms, ease);
+  .btn(rgb(204, 204, 204), 20%);
+  
+}
+
+.btn-primary {
+  .btn(#428bca);
+}
+
+.btn-success {
+  .btn(#5cb85c);
+}
+
+.btn-info {
+  .btn(#5bc0de);
+}
+
+.btn-warning {
+  .btn(#f0ad4e);
+}
+
+.btn-danger {
+  .btn(#d9534f);
+}
+
+.btn-link {
+  text-shadow: none;
+  background: none !important;
+  .box-shadow(none);
+  &:hover { 
+    border: 0;
+    background: none !important;
+    .box-shadow(none);
+    top: 0;
+  }
+  &:active { 
+    .box-shadow(none); 
+    top: 0;
+  }
+}
+
+.btn(@color, @percent: 10%)  {
+    border: 0;
+    text-shadow: 0px 1px 0px darken(@color, @percent);
+    background-color: @color;
+    .box-shadow(0px, 6px, 0px, darken(@color, @percent));
+    &:hover { 
+      border: 0;
+      background-color: lighten(@color, 5%) !important;
+      .box-shadow(0px, 4px, 0px, darken(@color, @percent));
+    }
+    &:active { 
+      .box-shadow(inset, 0px, 3px, 0px, darken(@color, @percent)); 
+    }
+} */
+
+/* ============================================ */
+/*By DjelalEddine@gmail.com*/
+
+/* #user .avatar {
+    width:60px;
+	}
+#user .avatar > img{
+	width:50px;
+	height:50px;
+	border-radius:10%;
+	} */
+/*Card*/
+/* #user .panel-thumb{
+margin:5px auto;
+text-align:center;	
+	}
+#user .panel-thumb .avatar-card {
+text-align:center;
+height:200px;
+margin:auto;
+overflow:hidden;
+}	
+#user .panel-thumb .avatar-card > img{
+	max-width:200px;
+	max-height:200px;
+	} */
+
+/* table*/
+/* #user .panel-table{
+  animation-duration:3s;
+}
+
+#user .panel-table .panel-body .table{
+  margin:0px;
+}
+#user .panel-table .panel-body {
+  padding:0px;
+}
+#user .panel-table .panel-body .table-bordered > thead > tr > th{
+  text-align:center;
+}
+#user .panel-table .panel-footer {
+  height:60px;
+  padding:0px;
+}
+ */
+
+

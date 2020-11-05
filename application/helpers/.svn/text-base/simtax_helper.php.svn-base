@@ -1,0 +1,169 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+if ( ! function_exists('dateFormat')){
+	
+	function dateFormat($dateTime, $format = "", $lang="id"){
+
+		$timestamp  = strtotime($dateTime);
+		$date       = date("d", $timestamp);
+		$time       = date("H:i", $timestamp);
+		$day        = date("l", $timestamp);
+		$month      = date("F", $timestamp);
+		$shortMonth = date("M", $timestamp);
+		$year       = date("Y", $timestamp);
+
+		if($lang == "id"){
+			$dayArr   = array("Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu");
+			$day      = $dayArr[date("w", $timestamp)];
+
+			$monthArr = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+			$month    = $monthArr[date("n", $timestamp)];
+
+			$shortMonthArr = array("", "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des");
+			$shortMonth    = $shortMonthArr[date("n", $timestamp)];
+		}
+
+		switch ($format) {
+			case '1':
+				$dateString = $date.", ".$month." ".$year;
+			break;
+			case '2':
+				$dateString = $day.", ".$month." ".$year;
+			break;
+			case '3':
+				$dateString = $date."-".$month."-".$year;
+			break;
+			case 'shortmonth':
+				$dateString = $date." ".$shortMonth." ".$year;
+			break;
+			case 'datetime':
+				$dateString = $date." ".$month." ".$year." ".$time;
+			break;
+			case 'monthonly':
+				$dateString = $month;
+			break;
+			case 'datetime2':
+				if($lang == "id"){
+					$dateString = $date." ".$month." ".$year." pukul ". $time;
+				}
+				else{
+					$dateString = $date." ".$month." ".$year." at ". $time;
+				}
+			break;
+			case 'pdf':
+				$month		= date("n", $timestamp);
+				$dateString = $month."/".$date."/".$year;
+			break;
+			default:
+				$dateString = $date." ".$month." ".$year;
+			break;
+		}
+
+		return $dateString;
+	}
+}
+
+if ( ! function_exists('get_masa_pajak')){
+	
+	function get_masa_pajak($bulan, $lang = "id", $full=false){
+
+		$shortMonth = date('F', mktime(0, 0, 0, $bulan, 10));
+
+		if($lang == "id"){
+			if($full == true){
+				$shortMonthArr = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+			}
+			else{
+				$shortMonthArr = array("", "Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des");
+			}
+			$shortMonth    = $shortMonthArr[$bulan];
+		}
+
+		return $shortMonth;
+	}
+}
+
+if ( ! function_exists('get_nama_cabang')){
+
+	function get_nama_cabang($kode_cabang){
+
+		$CI = get_instance();
+		$CI->load->model('cabang_mdl');
+
+		$cabang      = $CI->cabang_mdl->get_by_id($kode_cabang);
+
+		if($cabang){
+			$nama_cabang = $cabang->NAMA_CABANG;
+		}
+		else{
+			$nama_cabang = "";
+		}
+
+		return $nama_cabang;
+	}
+}
+
+if ( ! function_exists('get_list_cabang')){
+
+	function get_list_cabang(){
+
+		$CI = get_instance();
+		$CI->load->model('cabang_mdl');
+
+		$list_cabang = $CI->cabang_mdl->get_all();
+
+		return $list_cabang;
+	}
+}
+
+if ( ! function_exists('get_og_id')){
+
+	function get_og_id($kode_cabang){
+
+		$CI = get_instance();
+		$CI->load->model('cabang_mdl');
+
+		$organization_id = $CI->cabang_mdl->get_og_id($kode_cabang);
+
+		return $organization_id;
+	}
+}
+
+if ( ! function_exists('get_daftar_pajak')){
+
+	function get_daftar_pajak($kelompok_pajak = "", $detail=false){
+
+		$CI = get_instance();
+		$CI->load->model('pajak_mdl');
+
+		if($detail){
+			$pajak      = $CI->pajak_mdl->get_daftar_pajak_detail($kelompok_pajak);
+		}
+		else{
+			$pajak      = $CI->pajak_mdl->get_daftar_pajak($kelompok_pajak);
+		}
+
+		$nama_pajak = ($pajak) ? $pajak: '';
+
+		return $nama_pajak;
+
+	}
+}
+
+if ( ! function_exists('list_month')){
+
+	function list_month($lang="id"){
+
+		$monthArr = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+		if($lang == "eng"){
+			$monthArr = array("", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+		}
+
+		return $monthArr;
+
+	}
+}
+
+?>
