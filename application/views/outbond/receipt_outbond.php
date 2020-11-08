@@ -36,7 +36,7 @@
 								<thead>
 									<tr>
 										<th></th>
-										<th class="text-center">ITEM NUMBER</th>
+										< class="text-center">ITEM NUMBER</>
 										<th class="text-center">DESCRIPTION</th>
 										<th class="text-center">SPEC</th>
 										<th class="text-center">LOCATOR</th>
@@ -54,6 +54,36 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="modal fade" id="modal-print" role="dialog" aria-labelledby="modal-print">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form role="form" id="form-print">
+                        <input type="hidden" class="form-control" id="id-print" name="id">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Print QR Label of <span id="print-itemnumber"></span></h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <div class="form-group">
+                                <label class="form-control-label">Number of copies</label>
+								<input type="number" min="1" max="99" maxlength="3" class="form-control" name="printcopies" id="printcopies">
+                            </div> -->
+							<div class="form-group">
+								<label class="col-sm-4 control-label">Number of copies</label>
+								<div class="col-sm-2">
+									<input type="number" min="1" max="99" class="form-control" name="printcopies" id="printcopies" />
+								</div>
+							</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                            <button type="submit" class="btn btn-info" id="btnPrint" name="print" value="Yes">PRINT</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 		<!--Form Tambah-->
 		<!-- <div id="edit-data">
@@ -232,7 +262,7 @@
 						"pageLength": 100,
 						"lengthMenu": [[100, 250, 500, 1000],[100, 250, 500, 1000]],
 						"ajax": {
-							"url": "<?php echo site_url('outbond/load_rec_out'); ?>",
+							"url": "<?php echo site_url('outbound/load_rec_out'); ?>",
 							"type": "POST",
 							"beforeSend": function() {
 
@@ -245,21 +275,25 @@
 							"search": "_INPUT_"
 						},
 						"columns": [
-							{ "orderable": "false", "class": "select-checkbox" },
-							{ "data": "item_number", "class": "text-left", "width": "60px" },
+							{ "data": "row_selector" },
+							{ "data": "item_number", 
+							  "class": "text-right"
+							},
 							{ "data": "stock_item_description" },
-							{ "data": "stock_item_spec" },
+							{ "data": "stock_item_spec"	},
 							{ "data": "locator" },
 							{ "data": "receipt_number" },
 							{ "data": "receipt_date" },
 							{ "data": "po_number" },
-							{ "data": "quantity" },
+							{ "data": "quantity",
+							  "class": "text-right"
+							},
 							{ "data": "uom" },
-							{ "data": "display_name",
+							{ "data": "stock_receipt_id",
 							  "width": "80px",
 							  "class": "text-center",
 							  "render": function(data) {
-							return '<a href="javascript:void(0)" class="action-edit" title="Click to print ' + data + '" style="color:#ff6436"><i class="fa fa-edit" aria-hidden="true"></i></a>';}
+								return '<a href="javascript:void(0)" class="action-print" title="Click to print qr label' + data + '" style="color:#ff6436"><i class="fa fa-print" aria-hidden="true"></i></a>';}
 							  }
 							
 						],
@@ -269,7 +303,8 @@
 						"columnDefs": [{
 							"searchable": false,
 							"orderable": false,
-							"targets" : 0
+							"targets" : 0,
+							"className" : "select-checkbox"
 						}],
 						//"fixedColumns"		: true,			
 			/* fixedColumns:   {
@@ -392,6 +427,13 @@
 					emptyGrid();
 				});
 
+				// action modal view
+				$('#tabledata tbody').on('click', 'a.action-print', function() {
+					data = table.row($(this).parents('tr')).data();
+					$("#print-itemnumber").html(data.item_number);
+					$("#modal-print").modal('show');
+				});
+
 				function valueGrid() {
 					$("#stock_receipt_id").val(vstock_receipt_id);
 					$("#item_number").val(vitem_number);
@@ -429,5 +471,39 @@
 					$("#locator_segment1").val("");
 					$("#locator_segment2").val("");
 				}
+
+				$('#tabledata tbody').on('click', 'a.action-edit', function() {
+					data = table.row($(this).parents('tr')).data();
+					status = data.status;
+					group_id = data.group_id;
+					groups = group_id.split(", ");
+					alert('tes');
+					console.log(data);
+
+					// $("#id").val(data.id);
+					// $("#editUserName").val(data.user_name);
+					// $("#editEmail").val(data.email);
+					// $("#editName").val(data.display_name);
+					// $("#editCabang").val(data.kd_cabang);
+					// $("#status").val(data.status);
+
+					// $('#group-list').val(groups);
+					// $('#group-list').multiSelect('refresh');
+
+					// $('#refresh').attr('style', 'display: inline-block !important');
+					// $('#refresh').on('click', function() {
+					// 	$('#group-list').val(groups);
+					// 	$('#group-list').multiSelect('refresh');
+					// 	return false;
+					// });
+
+					// if (status == 'Active') {
+					// 	$("#active").prop("checked", true);
+					// } else {
+					// 	$("#not_active").prop("checked", true);
+					// }
+
+					// $("#modal-edit").modal('show');
+				});
 			});
 		</script>

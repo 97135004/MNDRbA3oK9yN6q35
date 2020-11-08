@@ -98,25 +98,25 @@ $db['default'] = array(
 
 
 //local oracle
-/*$tnsname = '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)))';
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => $tnsname,
-	'username' => 'qrcode',
-	'password' => 'qrcode',
-	'database' => 'qrcode',
-	'dbdriver' => 'oci8',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-); */
+// $tnsname = '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=172.16.241.125)(PORT=1521))(CONNECT_DATA=(SID=odsprd)))';
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => $tnsname,
+// 	'username' => 'odsquery',
+// 	'password' => 'odsquery',
+// 	'database' => 'ODSUSER',
+// 	'dbdriver' => 'oci8',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );

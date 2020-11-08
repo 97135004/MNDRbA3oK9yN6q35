@@ -19,7 +19,7 @@ class Outbond_mdl extends CI_Model
             $where = " where (upper(item_number) like '%" . strtoupper($q) . "%' or upper(stock_item_description) like '%" . strtoupper($q) . "%' or upper(stock_item_spec) like '%" . strtoupper($q) . "%') ";
         }
 
-        $queryExec = "SELECT 
+        $queryExec = "SELECT
                         STOCK_RECEIPT_ID,
                         ITEM_NUMBER,
                         STOCK_ITEM_DESCRIPTION,
